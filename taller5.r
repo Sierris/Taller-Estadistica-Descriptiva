@@ -65,7 +65,7 @@ hist(datos,breaks = ancho_clase,xlim=c(min(datos),max(datos)),xaxt="n",main="pH"
 axis(1, ancho_clase,las=1, font=1,cex.axis=1)
 
 #e
-# Se puede concluir que al menos el 75% del PH se encuentra por debajo de 7.350, también se puede concluir 
+# Se puede concluir que al menos el 75% del PH se encuentra por debajo de 7.350, también se puede concluir
 # que los datos poseen una dispersión de 0.0009 aproximadamente
 
 

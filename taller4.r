@@ -1,61 +1,74 @@
-#a<- c(77.3,61.2,82.4,75.9,61,70.2,65,80)
-a<-c(77.3,61.2,82.4,75.9,61,70.2,65,80)
-b <- c(3,10,15,13,8,5,2,0)
+# Solucion punto 4
 
-data<-cbind(a,b)
+# Hidroxiproplina
+hidro<-c(77.3,61.2,82.4,75.9,61,70.2,65,80)
+
+# Numero de pacientes
+num_pacientes <- c(3,10,15,13,8,5,2,0)
+
+data<-cbind(hidro, num_pacientes)
 
 data = data[order(data[,1]),];
 
-a<-data[,1]
-b<-data[,2]
+hidro<-data[,1]
+num_pacientes<-data[,2]
 
 
-#tabla de frecuencias
-x<-a
-absoluta<-b
-absoluta_acumulada <- cumsum(b)
-frecuencia_relativa<-b/sum(b)
-relativa_acumulada <- cumsum(b/sum(b))
+# A) Tabla de frecuencias
+
+x<-hidro
+absoluta<-num_pacientes
+absoluta_acumulada <- cumsum(num_pacientes)
+frecuencia_relativa<-num_pacientes/sum(num_pacientes)
+relativa_acumulada <- cumsum(num_pacientes/sum(num_pacientes))
 cbind(x,absoluta,absoluta_acumulada,frecuencia_relativa, relativa_acumulada)
 
 
-#diagrama de barras para frecuencuas absoluta, relativa y acumulada
+# Diagrama de barras para las frecuencias absoluta, relativa y acumulada
 
-barplot(absoluta,cex.names=1,names.arg=a,xlab="Hidroxiprolina (mg) ",ylab="Pacientes",main="Niveles de hidroxiprolina")
-barplot(absoluta_acumulada,cex.names=1,names.arg=a,xlab="Hidroxiprolina (mg) ",ylab="Pacientes",main="Niveles de hidroxiprolina")
-barplot(frecuencia_relativa,cex.names=1,names.arg=a,xlab="Hidroxiprolina (mg) ",ylab="Porcentaje de Pacientes",main="Niveles de hidroxiprolina")
-barplot(relativa_acumulada,cex.names=1,names.arg=a,xlab="Hidroxiprolina (mg) ",ylab="Porcentaje Pacientes",main="Niveles de hidroxiprolina")
+barplot(absoluta,cex.names=1,names.arg=hidro,xlab="Hidroxiprolina (mg) ",ylab="Pacientes",main="Niveles de hidroxiprolina")
+barplot(absoluta_acumulada,cex.names=1,names.arg=hidro,xlab="Hidroxiprolina (mg) ",ylab="Pacientes",main="Niveles de hidroxiprolina")
+barplot(frecuencia_relativa,cex.names=1,names.arg=hidro,xlab="Hidroxiprolina (mg) ",ylab="Porcentaje de Pacientes",main="Niveles de hidroxiprolina")
+barplot(relativa_acumulada,cex.names=1,names.arg=hidro,xlab="Hidroxiprolina (mg) ",ylab="Porcentaje Pacientes",main="Niveles de hidroxiprolina")
 
 
+# B) Medidas de tendencia central
 
-# medidas de tendencia central
-summary(b)
+summary(num_pacientes)
 
-#medidas de desviacion
+# C) Medidas de desviacion
 
-sd(b)
-var(b)
+var(num_pacientes)
+sd(num_pacientes)
 
-#creo un vector para calcular las medidas de tendencia con todos los valores
+# Creo un vector para calcular las medidas de tendencia con todos los valores
 datos<-vector()
 
-for (i in 1:length(a)){
-  datos<-c(datos,rep(a[i],b[i]))
+for (i in 1:length(hidro)){
+  datos<-c(datos,rep(hidro[i],num_pacientes[i]))
 }
-  
-datos
-# medidas de tendencia con metros
+# Medidas de tendencia con metros
+
 summary(datos)
-#desviacion con metros
-sd(datos)
+
+# Desviacion con metros
+
 var(datos)
-
-  
-#grafico de dispersion
-
-plot(b,xlab="Hidroxiprolina (mg) ",ylab="Pacientes",main="Niveles de hidroxiprolina")
+sd(datos)
 
 
-#conclusiones
+# D) Grafico de barras
+
+hist(data, xlab = "Hidroxiprolina (mg)", ylab = "Frecuencia", main = "Histograma de los datos")
+
+# E) Grafico de dispersion
+
+plot(num_pacientes, xlab="Hidroxiprolina (mg) ",ylab="Pacientes",main="Niveles de hidroxiprolina")
+
+# F) Conclusiones
+
+# La mayor cantidad de Hidroxiprolina absorbida por los pacientes fue del 82.40%,
+# frente a un promedio de 72.06%. En la gr�fica podemos percibir un peque�o sesgo
+# a la izquierda esto tambi�n es evidenciable ya que la mediana es mayor a la media.
 
 
