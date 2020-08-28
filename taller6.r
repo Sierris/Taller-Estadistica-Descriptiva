@@ -1,30 +1,45 @@
+# Solucion Punto 6
+
 datos<- c(3720,3795,3340,5600,3800,3580,5500,2000,1570,2360,1500,1840,3725,3790,3345,3805,5595,3575,1995,5505,2055,1575,1835,1505)
 datos_or<-datos
 
-#defino max y minimo para el tamano del intervalo
+# Defino max y minimo para el tamano del intervalo
+
 max<-max(datos)
 min<-min(datos)
-# tamano intervalo
+
+# Tamano intervalo, utilizamos 5 en este caso
+
 len_intervalo <- (max-min)/5
 
-#inicio el actual como el minimo
+# Inicio el actual como el minimo
+
 actual<-min+len_intervalo
-#inicio un vector vacio
+
+# Inicio un vector vacio
+
 intervalos<-vector()
 
+# Creo un vector de intervalos para luego evaluar los rangos
 for(i in 1:5){
-  #creo un vector de intervalos para luego evaluar los rangos
   intervalos<-c(intervalos,actual)
   actual<-actual+len_intervalo
 }
 
-# ordeno los datos para contar mejor
+# Ordeno los datos para contar mejor
+
 datos<-sort(datos)
-#vector donde se cuenta frecuencia
+
+# Vector donde se cuenta frecuencia
+
 frecuencia<-c(rep(0,5))
-#indice para saber con que intervalo comparo
+
+# Indice para saber con que intervalo comparo
+
 indice_comp<-1
-#indice dato
+
+# Indice dato
+
 d<-1
 
 while(d<=length((datos))){
@@ -45,7 +60,8 @@ for(i in intervalos){
 a<-intervalos
 b<-frecuencia
 
-#tabla de frecuencias
+# A) Tabla de frecuencias
+
 x<-a
 absoluta<-b
 absoluta_acumulada <- cumsum(b)
@@ -54,26 +70,29 @@ relativa_acumulada <- cumsum(b/sum(b))
 cbind(x,absoluta,absoluta_acumulada,frecuencia_relativa, relativa_acumulada)
 
 datos<- datos_or
-# medidas de tendencia central
+
+# B) Medidas de tendencia central
+
 summary(datos)
 
-#medidas de desviacion
+# C) Medidas de desviacion
+
 sd(datos)
 var(datos)
 
-#grafico de dispersion
-plot(datos,main="Niveles séricos de creatiquinasa",xlab="Niveles",ylab="Pacientes")
+# Grafico de dispersion
+
+plot(datos,main="Niveles sericos de creatiquinasa",xlab="Niveles",ylab="Pacientes")
 
 ancho_clase=c(min(datos),intervalos)
 
+# D) Histograma de frecuencias
 
-
-#histograma de frecuencias
-hist(datos,breaks = ancho_clase,xlim=c(min(datos),max(datos)),xaxt="n",main="Niveles séricos de creatiquinasa",xlab="Niveles",ylab="Pacientes")
+hist(datos,breaks = ancho_clase,xlim=c(min(datos),max(datos)),xaxt="n",main="Niveles sericos de creatiquinasa",xlab="Niveles",ylab="Pacientes")
 axis(1, ancho_clase,las=1, font=1,cex.axis=1)
-#conclusiones
 
+# F) Conclusiones
 
-
-
-
+# El mayor n�mero de pacientes est� ubicado en el rango de 3140 a 3960, el 25% de la
+# poblaci�n tiene niveles s�ricos mayores a 3796. Los datos de esta muestra tienen una
+# alta volatilidad y esto se evidencia con su varianza.
